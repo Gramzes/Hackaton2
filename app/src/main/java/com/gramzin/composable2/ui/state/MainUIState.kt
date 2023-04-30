@@ -7,7 +7,7 @@ import com.gramzin.composable2.domain.model.City
 import kotlinx.coroutines.flow.Flow
 
 data class MainUIState(
-    var cities: Flow<PagingData<City>>? = null,
+    var cities: Flow<PagingData<City>>,
     val loading: MutableState<Boolean> = mutableStateOf(false),
     val error: MutableState<Boolean> = mutableStateOf(false)
     )

@@ -6,9 +6,9 @@ import ru.rigellab.hb.domain.model.CityData
 
 data class CityResponse(
     @SerializedName("response")
-    val response: Response
+    val response: Response?
 )
 
 fun CityResponse.toData(): List<CityData>{
-    return response.items.map { it.toCityData() }
+    return response?.items?.map { it.toCityData() } ?: listOf()
 }

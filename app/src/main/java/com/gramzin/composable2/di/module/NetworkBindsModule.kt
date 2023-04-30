@@ -4,6 +4,7 @@ import com.gramzin.composable2.data.api.storage.CitiesRemoteStorageImpl
 import com.gramzin.composable2.data.storage.CitiesRemoteStorage
 import dagger.Binds
 import dagger.Module
+import ru.rigellab.hb.data.repository.CityRepositoryImpl
 import ru.rigellab.hb.data.repository.FuelRepositoryImpl
 import ru.rigellab.hb.domain.repository.CityRepository
 import ru.rigellab.hb.domain.repository.FuelRepository
@@ -18,14 +19,11 @@ interface NetworkBindsModule {
 
     @Binds
     fun cityRepositoryImpl_to_CityRepository(
-        cityRemoteStorageImpl: CitiesRemoteStorageImpl
+        cityRepositoryImpl: CityRepositoryImpl
     ): CityRepository
 
-    fun citiesRemoteStorageImpl_to_CitiesRemoteStorage(
-        cityRemoteStorageImpl: CitiesRemoteStorageImpl
-    ): CitiesRemoteStorage
-
-    fun fuelRepositoryImpl_to_FuelRepositoryImpl(
+    @Binds
+    fun fuelRepositoryImpl_to_FuelRepository(
         fuelRepositoryImpl: FuelRepositoryImpl
     ): FuelRepository
 }

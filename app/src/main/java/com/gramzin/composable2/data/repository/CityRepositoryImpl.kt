@@ -17,7 +17,8 @@ import javax.inject.Inject
 class CityRepositoryImpl @Inject constructor(
     private val cityPagingSourceFactory: CityPagingSource.Factory): CityRepository {
     override fun getCities(): Flow<PagingData<City>> {
-        return Pager(PagingConfig(pageSize = ApiUtils.PAGE_SIZE)) {
+        return Pager(PagingConfig(pageSize = ApiUtils.PAGE_SIZE,
+            initialLoadSize = ApiUtils.PAGE_SIZE)) {
             cityPagingSourceFactory.create()
         }.flow.toDomain()
     }

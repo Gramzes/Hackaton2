@@ -10,11 +10,8 @@ import com.gramzin.composable2.ui.state.MainUIState
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(getCitiesUseCase: GetCitiesUseCase): ViewModel() {
-    private val _state = mutableStateOf(MainUIState())
+    private val _state = mutableStateOf(MainUIState(getCitiesUseCase().cachedIn(viewModelScope)))
     val state: State<MainUIState> = _state
 
-    init {
-         _state.value.cities = getCitiesUseCase().cachedIn(viewModelScope)
-    }
 
 }

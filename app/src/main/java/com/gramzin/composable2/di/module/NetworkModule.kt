@@ -2,15 +2,18 @@ package com.gramzin.composable2.di.module
 
 import com.gramzin.composable2.data.api.ApiUtils
 import com.gramzin.composable2.data.api.apiService.CitiesApiService
+import com.gramzin.composable2.data.paging.CityPagingSource
 import dagger.Module
 import dagger.Provides
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import ru.rigellab.hb.data.repository.CityRepositoryImpl
+import ru.rigellab.hb.domain.repository.CityRepository
 import javax.inject.Singleton
 
-@Module(includes = [NetworkModule::class])
+@Module(includes = [NetworkBindsModule::class])
 object NetworkModule {
     @Provides
     fun httpLoggingInterceptor() = HttpLoggingInterceptor().apply {

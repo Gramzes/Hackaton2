@@ -27,10 +27,10 @@ import androidx.paging.compose.items
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun MainScreen(onClick: (City) -> Unit, viewModel: MainViewModel = viewModel()) {
+fun MainScreen(onClick: (City) -> Unit, viewModel: MainViewModel) {
     Box(modifier = Modifier.fillMaxSize()) {
         CityList(modifier = Modifier.fillMaxSize(),
-            cityList = viewModel.state.value.cities!!, onClick = onClick)
+            cityList = viewModel.state.value.cities, onClick = onClick)
     }
 }
 

@@ -21,7 +21,7 @@ class CityPagingSource @Inject constructor(private val citiesRemoteStorage: Citi
         return try {
             val nextPage = params.key ?: 1
             val count = params.loadSize
-            val offset = nextPage * (count - 1)
+            val offset = count * (nextPage - 1)
             val citiesList = citiesRemoteStorage.getCities(count, offset)
             LoadResult.Page(
                 data = citiesList,
